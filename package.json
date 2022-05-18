@@ -22,13 +22,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-no-watch": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "check-types": "tsc",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|ts|tsx|json|css)\"",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
-    "validate": "yarn run check-types && yarn run check-format && yarn run lint && yarn run build",
+    "validate": "yarn run test-no-watch && yarn run check-types && yarn run check-format && yarn run lint && yarn run build",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
@@ -39,8 +40,7 @@
       "eslint"
     ],
     "**/*.+(js|ts|tsx|json|css)": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "eslintConfig": {
