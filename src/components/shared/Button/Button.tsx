@@ -1,4 +1,5 @@
 import React from 'react';
+// TODO use css or scss modules
 import './button.css';
 
 interface ButtonProps {
