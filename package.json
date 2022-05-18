@@ -21,11 +21,23 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ignore-path .gitignore .",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "check-types": "tsc",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|ts|tsx|json|css)\"",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
-    "validate": "yarn run check-format && yarn run lint && yarn run build"
+    "validate": "yarn run check-types && yarn run check-format && yarn run lint && yarn run build",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.+(js|ts|tsx)": [
+      "eslint"
+    ],
+    "**/*.+(js|ts|tsx|json|css)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +63,8 @@
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",
-    "prettier": "2.6.2"
+    "lint-staged": "^12.4.1",
+    "prettier": "2.6.2",
+    "husky": "^8.0.0"
   }
 }
